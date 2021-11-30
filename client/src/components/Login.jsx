@@ -1,92 +1,53 @@
 import React from "react";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/style.css";
-import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-
-
-// function showPassword() {
-//   var password = document.getElementById("pwd");
-//   if (password.type === "password") {
-//     password.type = "text";
-//   } else {
-//     password.type = "password";
-//   }
-// }
+// import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 function Login() {
   return (
-    <div class="wrapper">
-      <div class="card">
-        <form action="#" class="d-flex flex-column">
-          <div class="h3 text-center text-white">Login</div>
-          <div class="d-flex align-items-center input-field my-3 mb-4">
-            <span class="far fa-user p-2"></span>
-            <input
-              type="text"
-              placeholder="Username or Email"
-              required
-              class="form-control"
-            />
-          </div>
-          <div class="d-flex align-items-center input-field mb-4">
-            <span class="fas fa-lock p-2"></span>
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              class="form-control"
-              id="pwd"
-            />
-            <button class="btn" onclick="showPassword()" >
-              <span class="fas fa-eye-slash"></span>
-            </button>
-          </div>
-          <div class="d-sm-flex align-items-sm-center justify-content-sm-between">
-            <div class="d-flex align-items-center">
-              <label class="option">
-                <span class="text-light-white">Remember Me</span>
-                <input type="checkbox" checked />
-                <span class="checkmark"></span>
-              </label>
+    <div className="user_card">
+      <div className="d-flex justify-content-center">
+        <div className="brand_logo_container">
+          <img src="" className="brand_logo" alt="Logo" />
+        </div>
+      </div>
+      <div className="d-flex justify-content-center form_container">
+        <form>
+          <div className="input-group mb-3">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <div class="mt-sm-0 mt-3">
-              <a href="#">Forgot password?</a>
+            <input type="text" name="" className="form-control input_user" value="" placeholder="username" />
+          </div>
+          <div className="input-group mb-2">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="" className="form-control input_pass" value="" placeholder="password" />
+          </div>
+          <div className="form-group">
+            <div className="custom-control custom-checkbox">
+              <input type="checkbox" className="custom-control-input" id="customControlInline" />
+              <label className="custom-control-label" for="customControlInline">Remember me</label>
             </div>
           </div>
-          <div class="my-3">
-            <input type="submit" value="Login" class="btn btn-primary" />
-          </div>
-          <div class="mb-3">
-            <span class="text-light-white">Don't have an account?</span>
-            <a href="#">Sign Up</a>
+          <div className="d-flex justify-content-center mt-3 login_container">
+            <button type="button" name="button" className="btn login_btn">Login</button>
           </div>
         </form>
-        <div class="position-relative border-bottom my-3 line">
-          <span class="connect">or connect with</span>
+      </div>
+
+      <div className="mt-4">
+        <div className="d-flex justify-content-center links">
+          Don't have an account? <a href="#" className="ml-2">Sign Up</a>
         </div>
-        <div class="text-center py-3 connections">
-          <a href="https://wwww.facebook.com" target="_blank" class="px-2">
-            <img
-              src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg"
-              alt=""
-            />
-          </a>
-          <a href="https://www.google.com" target="_blank" class="px-2">
-            <img
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
-              alt=""
-            />
-          </a>
-          <a href="https://www.github.com" target="_blank" class="px-2">
-            <img
-              src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png"
-              alt=""
-            />
-          </a>
+        <div className="d-flex justify-content-center links">
+          <a href="#">Forgot your password?</a>
         </div>
       </div>
     </div>
+
   );
 }
 export default Login;
