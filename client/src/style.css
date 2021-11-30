@@ -103,6 +103,40 @@ body {
   padding: 0 2rem;
 }
 
+
+/* Contact us */
+.carousel-img{
+  width : 30% ;
+  border-radius: 100%;
+  margin: 30px;
+}
+
+.carousel-item{
+  padding: 3% 15%;
+}
+
+.carousel-text h2{
+  font-size: "Montserrat";
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+#carouselExampleIndicators {
+  text-align: center;
+  font-size: 30px;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 146, 223),
+    rgb(0, 160, 232),
+    rgb(175, 219, 244)
+  );
+}
+
+.carousel-item p{
+  padding-top: 5%;
+}
+
 /* Footer */
 
 #footer {
