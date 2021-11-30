@@ -113,3 +113,9 @@ body {
 .social-icons {
   margin: 20px 10px;
 }
+
+.wishlist {
+  text-align: center;
+  padding: 2%;
+  vertical-align: middle;
+}
