@@ -14,7 +14,7 @@ font-size: 2em;
 color: #2d3436;
 margin: 20px 0 30px;
 }
-
+/* 
 .card {
 border-radius: 25px;
 position: relative;
@@ -35,7 +35,7 @@ position: absolute;
 top: 0;
 left: 0;
 display: flex;
-}
+} */
 
 .name {
 font-size: 2em;
