@@ -4,7 +4,7 @@ import SellCard from "./SellCard";
 function SellPage() {
 
     return ( 
-        <div class="pt-4" >
+        <div class="pt-0" >
             <SellCard />            
         </div>      
     )

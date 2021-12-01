@@ -1,6 +1,16 @@
 .regheading{
     text-decoration: underline;
 }
+.SellCardBG{
+    background-image: linear-gradient(
+    to right,
+    rgb(0, 146, 223),
+    rgb(0, 160, 232),
+    rgb(175, 219, 244)
+  );
+  margin: 0px;
+  padding-bottom: 30px;
+}
 .SellCard{
   border: 5px solid rgb(73, 72, 72);
   border-radius: 25px;
@@ -8,6 +18,8 @@
   background-image: linear-gradient(to bottom right, rgb(243, 241, 248), rgb(191, 168, 235));
   width: 55%;
   margin: auto;
+  
+
 }
 .sellcardsubmitdiv{
     text-align: center;

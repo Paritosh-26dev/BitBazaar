@@ -4,7 +4,7 @@ import "./SellCard.css"
 function SellCard() {
 
     return ( 
-        <div >
+        <div class=" SellCardBG">
         <form class=" SellCard">
         <h1 class="mb-5 regheading">Register your item here :</h1>
         <div class="mb-3">
