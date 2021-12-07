@@ -32,7 +32,7 @@ function BuyPage()
     if (!list) return null;
 
     return (
-        <div class="row row-cols-1 row-cols-md-3 g-4 pb-5 ml-2 mr-2 mt-2">
+        <div class="row row-cols-1 row-cols-md-3 g-4 pb-5 pl-4 pr-4 pt-4 buycardBG">
         {list.map(CreateBuyCard)}
         </div>
         
