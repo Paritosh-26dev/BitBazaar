@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended : true}));
 app.use(express.static("public")) ;
 
 //connecting to mongodb atlas->BitBazaar database
-mongoose.connect("mongodb+srv://bitbazaar:klpd@cluster0.hh4t5.mongodb.net/BitBazaar");
+mongoose.connect("mongodb+srv://bitbazaar:@cluster0.hh4t5.mongodb.net/BitBazaar");
 
 const PORT=process.env.PORT || 5000;
 
