@@ -18,13 +18,13 @@ function Login() {
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" name="" className="form-control input_user" value="" placeholder="username" />
+            <input type="text" name="" className="form-control input_user" placeholder="username" />
           </div>
           <div className="input-group mb-2">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="" className="form-control input_pass" value="" placeholder="password" />
+            <input type="password" name="" className="form-control input_pass" placeholder="password" />
           </div>
           <div className="form-group">
             <div className="custom-control custom-checkbox">
