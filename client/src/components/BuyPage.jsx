@@ -2,13 +2,40 @@ import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BuyCard from "./BuyCard";
 import   "./BuyCard.css"
+import axios from "axios";
 
-function BuyPage() {
+const baseURL = "http://localhost:5000/products/";
 
-    return ( 
-        <div class="buycardBG">
-            <BuyCard />            
-        </div>     
-    )
+function CreateBuyCard(item)
+{
+    return (
+        <BuyCard 
+            name= {item.name}
+            image= {item.image}
+            desc= {item.desc}
+            price= {item.price}
+            seller= {item.seller}
+            date= {item.date} 
+        />
+    );
+}
+
+function BuyPage() 
+{
+    const [list, setList] = React.useState(null);
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+        setList(response.data);
+        });
+    }, []);
+    console.log(list);
+    if (!list) return null;
+
+    return (
+        <div class="row row-cols-1 row-cols-md-3 g-4 pb-5 ml-2 mr-2 mt-2">
+        {list.map(CreateBuyCard)}
+        </div>
+        
+    );
 }
 export default BuyPage;

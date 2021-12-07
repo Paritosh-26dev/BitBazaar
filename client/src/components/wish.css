@@ -1,0 +1,9 @@
+.wishlist{
+    background-image: linear-gradient(
+    to right,
+    rgb(0, 146, 223),
+    rgb(0, 160, 232),
+    rgb(175, 219, 244)
+  );
+  height: 100vh;
+}
