@@ -1,47 +1,119 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "./SellCard.css"
+import "./SellCard.css";
+import axios from "axios";
+
+
+const baseURL = "http://localhost:5000/create";
+
 function SellCard() {
 
-    return ( 
-        <div class=" SellCardBG">
-        <form class=" SellCard">
-        <h1 class="mb-5 regheading">Register your item here :</h1>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label fw-bold">Product Name :</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-        </div> 
-        <div class="mb-3">
-        <label for="inputState" class="mb-2 fw-bold">Category :</label>
-        <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>Stationary</option>
-            <option>Electronics</option>
-            <option>Others</option>
-        </select>
-        </div>  
-        <div class="form-group mb-3">
-            <label class="form-label fw-bold" for="exampleInputPassword1">Expected price :</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder=" Rs"/>
-        </div>
-       
-        <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="fw-bold ">Product Description :</label>
-        <div id="emailHelp" class="form-text">Write up about the products condition .</div>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="mb-3">
-        <label for="formFileMultiple" class="form-label fw-bold">Upload the pictures of your product here :</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple />
-        </div>
-        <div class="sellcardsubmitdiv">
-        <button type="submit" class="btn btn-outline-dark sellcardsubmitbtn"><h5>Submit</h5></button>
-        </div>
-        </form>
-        </div>
+    const [input, setInput] = useState({
+        name: "",
+        price: "",
+        description: ""
+    })
 
-        
-    )
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
+        })
+    }
+    function handleClick(event) {
+        event.preventDefault();
+        const newItem = {
+            name: input.name,
+            price: input.price,
+            description: input.description
+        }
 
+        axios.post(baseURL, newItem);
+    }
+
+
+    return (
+        <div className=" SellCardBG">
+            <form className="SellCard" >
+                <h1 className="mb-5 regheading">Register your item here :</h1>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label fw-bold">
+                        Product Name :
+                    </label>
+                    <input
+                        name="name"
+                        onChange={handleChange}
+                        value={input.name}
+                        type="text"
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="inputState" className="mb-2 fw-bold">
+                        Category :
+                    </label>
+                    <select id="inputState" className="form-control">
+                        <option selected>Choose...</option>
+                        <option>Stationary</option>
+                        <option>Electronics</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="form-label fw-bold" htmlFor="exampleInputPassword1">
+                        Expected price :
+                    </label>
+                    <input
+                        name="price"
+                        onChange={handleChange}
+                        value={input.price}
+                        type="number"
+                        className="form-control"
+                        id="exampleInputPassword1"
+                        placeholder=" Rs"
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="fw-bold ">
+                        Product Description :
+                    </label>
+                    <div id="emailHelp" className="form-text">
+                        Write up about the products condition .
+                    </div>
+                    <textarea
+                        name="description"
+                        onChange={handleChange}
+                        value={input.description}
+                        className="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                    ></textarea>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="formFileMultiple" className="form-label fw-bold">
+                        Upload the pictures of your product here :
+                    </label>
+                    <input
+                        // onChange={handleChange}
+                        className="form-control"
+                        type="file"
+                        id="formFileMultiple"
+                        multiple
+                    />
+                </div>
+                <div className="sellcardsubmitdiv">
+                    <button type="submit" onClick={handleClick} className="btn btn-outline-dark sellcardsubmitbtn">
+                        <h5>Submit</h5>
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
 }
 export default SellCard;
