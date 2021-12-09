@@ -24,7 +24,7 @@ function SellCard() {
         })
     }
     function handleClick(event) {
-        event.preventDefault();
+        // event.preventDefault();
         const newItem = {
             name: input.name,
             price: input.price,
