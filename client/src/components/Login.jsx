@@ -40,7 +40,7 @@ function Login() {
 
       <div className="mt-4">
         <div className="d-flex justify-content-center links">
-          Don't have an account? <a href="#" className="ml-2">Sign Up</a>
+          Don't have an account? <a href="http://localhost:3000/signup" className="ml-2">Sign Up</a>
         </div>
         <div className="d-flex justify-content-center links">
           <a href="#">Forgot your password?</a>
