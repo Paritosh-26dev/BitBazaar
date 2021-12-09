@@ -4,7 +4,7 @@ import BuyCard from "./BuyCard";
 import   "./BuyCard.css"
 import axios from "axios";
 
-const baseURL = "http://localhost:5000/products/";
+const baseURL = "http://localhost:5000/sell";
 
 function CreateBuyCard(item)
 {
@@ -12,7 +12,7 @@ function CreateBuyCard(item)
         <BuyCard 
             name= {item.name}
             image= {item.image}
-            desc= {item.desc}
+            desc= {item.description}
             price= {item.price}
             seller= {item.seller}
             date= {item.date} 
@@ -23,11 +23,13 @@ function CreateBuyCard(item)
 function BuyPage() 
 {
     const [list, setList] = React.useState(null);
-    React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
-        setList(response.data);
-        });
-    }, []);
+    React.useEffect(() =>{
+        fetch("http://localhost:5000/sell").then(res =>{
+            if(res.ok){
+                return res.json();
+            }
+        }).then(jsonRes => setList(jsonRes));
+    });
     console.log(list);
     if (!list) return null;
 
