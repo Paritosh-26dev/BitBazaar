@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 import Home from "./Home";
+import Signup from "./SignupPage";
 import Navbar from "./Navbar";
 import WishList from "./WishList";
 import BuyPage from "./BuyPage";
@@ -18,6 +19,7 @@ function App() {
       </div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/Marketplace" element={<BuyPage />} />
           <Route path="/Wishlist" element={<WishList />} />
           <Route path="/Sell" element={<SellPage />} />

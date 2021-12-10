@@ -15,6 +15,7 @@ function SellCard() {
     })
 
     function handleChange(event) {
+        // console.log(event.target)
         const { name, value } = event.target;
         setInput(prevInput => {
             return {

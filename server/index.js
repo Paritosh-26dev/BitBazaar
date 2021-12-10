@@ -9,15 +9,15 @@ app.use(express.json());
 //connecting to mongodb atlas->BitBazaar database
 mongoose.connect("mongodb+srv://bitbazaar:klpd@cluster0.hh4t5.mongodb.net/testDB");
 
-//below code is contributed by team lobham xd
+//below code is contributed by team Parishal xd
 app.use("/" , require("./routes/itemRoute")) ;
 app.use("/" , require("./routes/marketplaceRoute")) ;
+app.use("/" , require("./routes/userRoute")) ;
+app.use("/" , require("./routes/findUserRoute")) ;
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`)
 })
-
-
 

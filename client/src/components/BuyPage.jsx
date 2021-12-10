@@ -30,7 +30,7 @@ function BuyPage()
             }
         }).then(jsonRes => setList(jsonRes));
     });
-    console.log(list);
+    // console.log(list);
     if (!list) return null;
 
     return (
