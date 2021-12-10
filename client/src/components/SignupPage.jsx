@@ -23,14 +23,16 @@ function SignupPage() {
     console.log(input)
   }
   function handleClick(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const newUser = {
       username: input.username,
       password: input.password
     }
-    console.log(newUser);
 
-    axios.post(baseURL, newUser);
+    axios.post(baseURL, newUser)
+    .then(res =>{
+      console.log(res.data);
+    })
   }
   return (
     <div className="home">

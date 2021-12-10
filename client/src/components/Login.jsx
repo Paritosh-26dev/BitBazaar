@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/style.css";
-// import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
+import axios from "axios";
 
+const baseURL = "http://localhost:5000/findUser";
 
-function Login() {
+function Login() 
+{
+  const [input, setInput] = useState({
+    username: "",
+    password: ""
+  })
+
+  function handleChange(event) 
+  {
+    const { name, value } = event.target;
+    setInput(prevInput => {
+      return {
+        ...prevInput,
+        [name]: value
+      }
+    })
+    console.log(input)
+  }
+
+  function handleClick(event) 
+  {
+    event.preventDefault();
+    const credentials = {
+      username: input.username,
+      password: input.password
+    }
+    // console.log(credentials);
+    axios.post(baseURL, credentials).then(res => 
+      {
+      if (res.data.success) {
+        
+        console.log("correct id password!!!");
+        console.log(res.data.user);
+
+      }
+      else { 
+        console.log("incorrect id password!!!");
+        console.log(res.data.user);
+      }
+    })
+  }
   return (
     <div className="user_card">
       <div className="d-flex justify-content-center">
@@ -18,13 +59,28 @@ function Login() {
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" name="" className="form-control input_user" placeholder="username" />
+            <input 
+            onChange={handleChange}
+            id="example1"
+            aria-describedby="usernameHelp"
+            type="text" 
+            name="username" 
+            className="form-control input_user" 
+            placeholder="username" />
           </div>
           <div className="input-group mb-2">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="" className="form-control input_pass" placeholder="password" />
+            <input 
+            onChange={handleChange}
+            id="example2"
+            aria-describedby="usernameHelp" 
+            type="password" 
+            name="password" 
+            className="form-control input_pass" 
+            placeholder="password" 
+            />
           </div>
           <div className="form-group">
             <div className="custom-control custom-checkbox">
@@ -33,7 +89,7 @@ function Login() {
             </div>
           </div>
           <div className="d-flex justify-content-center mt-3 login_container">
-            <button type="button" name="button" className="btn login_btn">Login</button>
+            <button onClick={handleClick}  type="button" name="button" className="btn login_btn">Login</button>
           </div>
         </form>
       </div>
