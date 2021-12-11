@@ -1,39 +1,37 @@
-import React, { useState } from "react";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/style.css";
-import axios from "axios";
 
-const baseURL = "http://localhost:5000/createNewUser";
+// const baseURL = "http://localhost:5000/createNewUser";
 
 function SignupPage() {
-  const [input, setInput] = useState({
-    username: "",
-    password: ""
-  })
+  const navigate = useNavigate()
 
-  function handleChange(event) {
-    // console.log(event.target)
-    const { name, value } = event.target;
-    setInput(prevInput => {
-      return {
-        ...prevInput,
-        [name]: value
-      }
-    })
-    console.log(input)
-  }
-  function handleClick(event) {
-    // event.preventDefault();
-    const newUser = {
-      username: input.username,
-      password: input.password
-    }
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 
-    axios.post(baseURL, newUser)
-    .then(res =>{
-      console.log(res.data);
-    })
-  }
+	async function registerUser(event) {
+		event.preventDefault();
+		const response = await fetch('http://localhost:5000/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				name,
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json();
+
+		if (data.status === 'ok') {
+			navigate('/');
+		}
+	}
   return (
     <div className="home">
       <div className="row">
@@ -46,19 +44,34 @@ function SignupPage() {
             </div>
             <div className="d-flex justify-content-center form_container">
 
-              <form >
+              <form onSubmit={registerUser}>
                 <div className="input-group mb-3">
                   <div className="input-group-append">
                     <span className="input-group-text"><i className="fas fa-user"></i></span>
                   </div>
 
                   <input 
-                  onChange={handleChange}
+                  onChange={(e) => setName(e.target.value)}
                   type="text" 
                   name="username" 
                   id="exampleInputusername1"
                   aria-describedby="usernameHelp"
                   className="form-control input_user" placeholder="username"
+                   />
+
+                </div>
+                <div className="input-group mb-3">
+                  <div className="input-group-append">
+                    <span className="input-group-text"><i className="fas fa-user"></i></span>
+                  </div>
+
+                  <input 
+                 onChange={(e) => setEmail(e.target.value)}
+                  type="email" 
+                  name="email" 
+                  id="exampleInputusername2"
+                  aria-describedby="usernameHelp"
+                  className="form-control input_user" placeholder="E-mail"
                    />
 
                 </div>
@@ -68,7 +81,7 @@ function SignupPage() {
                   </div>
 
                   <input 
-                  onChange={handleChange}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password" 
                   name="password" 
                   id="exampleInputpass1"
@@ -78,7 +91,7 @@ function SignupPage() {
                   
                 </div>
                 <div className="d-flex justify-content-center mt-3 login_container">
-                  <button onClick={handleClick} type="submit" name="button" className="btn login_btn">Signup</button>
+                  <button  type="submit" name="button" className="btn login_btn">Signup</button>
                 </div>
               </form>
 
@@ -89,7 +102,6 @@ function SignupPage() {
               </div>
             </div>
           </div>
-          );
 
 
         </div>

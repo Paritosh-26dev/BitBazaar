@@ -1,23 +1,26 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
-var cors = require('cors');
+const cors = require('cors');
 
+//Middleware setup
 app.use(cors());
 app.use(express.json());
 
 //connecting to mongodb atlas->BitBazaar database
-mongoose.connect("mongodb+srv://bitbazaar:klpd@cluster0.hh4t5.mongodb.net/testDB");
+const mongodb_uri = process.env.MONGODB_URI;
+mongoose.connect(mongodb_uri);
 
-//below code is contributed by team Parishal xd
-app.use("/" , require("./routes/itemRoute")) ;
-app.use("/" , require("./routes/marketplaceRoute")) ;
+//Routes module
+app.use("/", require("./routes/itemRoute"));
+app.use("/", require("./routes/marketplaceRoute"));
 app.use("/" , require("./routes/userRoute")) ;
 app.use("/" , require("./routes/findUserRoute")) ;
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`)
+	console.log(`Server is running on ${PORT}`)
 })
 

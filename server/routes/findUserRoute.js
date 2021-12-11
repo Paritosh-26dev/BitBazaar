@@ -1,31 +1,38 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const User = require("../models/userCard");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-router.route("/findUser").post((req, res) => {
+//API for loging in user
+router.post('/api/login', async (req, res) => {
+	const user = await User.findOne({
+		email: req.body.email,
+	})
 
-    let err = true;
-    let success = false;
-    User.findOne({ username: req.body.username }).then(result => {
-       
-        if (result) 
-        {
-            if (result.password == req.body.password) 
-            {
-                err = false;
-                success = true;
-            }
-        }
-        const response = {
-            success: success,
-            error: err,
-            msg: 'Invalid username or password',
-            user: req.body.username,
-            password: req.body.password,
-            // token: null
-        };
-        res.send(response);
-    })
-});
+	if (!user) {
+		return { status: 'error', error: 'Invalid login' }
+	}
+
+	const isPasswordValid = await bcrypt.compare(
+		req.body.password,
+		user.password
+	)
+
+	if (isPasswordValid) {
+		const token = jwt.sign(
+			{
+				name: user.name,
+				email: user.email,
+			},
+			process.env.JWT_SECRET
+		)
+
+		return res.json({ status: 'ok', user: token })
+	} else {
+		return res.json({ status: 'error', user: false })
+	}
+})
 
 module.exports = router;
