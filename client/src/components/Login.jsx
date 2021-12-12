@@ -1,50 +1,35 @@
 import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/style.css";
-import axios from "axios";
 
-const baseURL = "http://localhost:5000/findUser";
+// const baseURL = "http://localhost:5000/findUser";
 
-function Login() 
-{
-  const [input, setInput] = useState({
-    username: "",
-    password: ""
-  })
+function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  function handleChange(event) 
-  {
-    const { name, value } = event.target;
-    setInput(prevInput => {
-      return {
-        ...prevInput,
-        [name]: value
-      }
+  async function loginUser(event) {
+    // event.preventDefault()
+    const response = await fetch('http://localhost:5000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     })
-    console.log(input)
-  }
 
-  function handleClick(event) 
-  {
-    event.preventDefault();
-    const credentials = {
-      username: input.username,
-      password: input.password
+    const data = await response.json();
+
+    if (data.user) {
+      localStorage.setItem('token', data.user);
+      alert('Login successful');
+      window.location.href = '/Marketplace'
+    } else {
+      alert('Please check your username and password');
     }
-    // console.log(credentials);
-    axios.post(baseURL, credentials).then(res => 
-      {
-      if (res.data.success) {
-        
-        console.log("correct id password!!!");
-        console.log(res.data.user);
-
-      }
-      else { 
-        console.log("incorrect id password!!!");
-        console.log(res.data.user);
-      }
-    })
   }
   return (
     <div className="user_card">
@@ -54,42 +39,36 @@ function Login()
         </div>
       </div>
       <div className="d-flex justify-content-center form_container">
-        <form>
+        <form onSubmit={loginUser}>
           <div className="input-group mb-3">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input 
-            onChange={handleChange}
-            id="example1"
-            aria-describedby="usernameHelp"
-            type="text" 
-            name="username" 
-            className="form-control input_user" 
-            placeholder="username" />
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              id="example1"
+              aria-describedby="usernameHelp"
+              type="email"
+              name="email"
+              className="form-control input_user"
+              placeholder="E-mail" />
           </div>
           <div className="input-group mb-2">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input 
-            onChange={handleChange}
-            id="example2"
-            aria-describedby="usernameHelp" 
-            type="password" 
-            name="password" 
-            className="form-control input_pass" 
-            placeholder="password" 
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              id="example2"
+              aria-describedby="usernameHelp"
+              type="password"
+              name="password"
+              className="form-control input_pass"
+              placeholder="password"
             />
           </div>
-          <div className="form-group">
-            <div className="custom-control custom-checkbox">
-              <input type="checkbox" className="custom-control-input" id="customControlInline" />
-              <label className="custom-control-label" for="customControlInline">Remember me</label>
-            </div>
-          </div>
           <div className="d-flex justify-content-center mt-3 login_container">
-            <button onClick={handleClick}  type="button" name="button" className="btn login_btn">Login</button>
+            <button type="submit" name="button" className="btn login_btn">Login</button>
           </div>
         </form>
       </div>
@@ -99,7 +78,7 @@ function Login()
           Don't have an account? <a href="http://localhost:3000/signup" className="ml-2">Sign Up</a>
         </div>
         <div className="d-flex justify-content-center links">
-          <a href="#">Forgot your password?</a>
+          <a href="/">Forgot your password?</a>
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./SellCard.css";
 import axios from "axios";
 
-
 const baseURL = "http://localhost:5000/create";
 
 function SellCard() {

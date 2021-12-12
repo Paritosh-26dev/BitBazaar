@@ -1,4 +1,4 @@
-const mongoose = require("mongoose") ;
+const mongoose = require("mongoose");
 
 const itemSchema = {
     name: String,
@@ -6,6 +6,6 @@ const itemSchema = {
     description: String
 }
 
-const Item = mongoose.model("Item" , itemSchema) ;
+const Item = mongoose.model("Item", itemSchema);
 
-module.exports = Item ;
+module.exports = Item;

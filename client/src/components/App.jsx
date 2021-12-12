@@ -8,7 +8,7 @@ import BuyPage from "./BuyPage";
 import SellPage from "./SellPage";
 import ContactUs from "./ContactUs";
 import ErorPage from "./ErrorPage";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
   return (
