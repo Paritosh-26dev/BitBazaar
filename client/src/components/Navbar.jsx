@@ -28,16 +28,19 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/ContactUs">Contact Us</Link>
                         </li>
+                        <li><div className="dropdown">
+                            <i className="nav-link fas fa-user-circle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profile</i>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <Link className="dropdown-item" to="/signup">Sign Up</Link>
+                                <Link className="dropdown-item" to="/">Login</Link>
+                                <Link className="dropdown-item" to="/">Fuck Off</Link>
+                            </div>
+                        </div>
+                        </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
                 </div>
             </nav>
         </div>
-
-
     );
 }
 

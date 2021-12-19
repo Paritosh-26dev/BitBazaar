@@ -6,7 +6,7 @@ import "../../src/style.css";
 // const baseURL = "http://localhost:5000/createNewUser";
 
 function SignupPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -17,7 +17,7 @@ function SignupPage() {
 		const response = await fetch('http://localhost:5000/api/register', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/json', 
 			},
 			body: JSON.stringify({
 				name,
@@ -29,7 +29,8 @@ function SignupPage() {
 		const data = await response.json();
 
 		if (data.status === 'ok') {
-			navigate('/');
+      alert("Succesfully signed up !")
+			navigate('/Marketplace');
 		}
 	}
   return (
