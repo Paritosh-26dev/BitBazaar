@@ -9,7 +9,7 @@ function Login() {
   const [password, setPassword] = useState('')
 
   async function loginUser(event) {
-    // event.preventDefault()
+    event.preventDefault();
     const response = await fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: {
@@ -22,7 +22,7 @@ function Login() {
     })
 
     const data = await response.json();
-
+ 
     if (data.user) {
       localStorage.setItem('token', data.user);
       alert('Login successful');

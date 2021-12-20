@@ -1,37 +1,31 @@
-require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const User = require("../models/userCard");
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const generateToken = require("../utils/generateToken");
 
 //API for loging in user
 router.post('/api/login', async (req, res) => {
-	const user = await User.findOne({
-		email: req.body.email,
-	})
+	const { email, password } = req.body;
 
-	if (!user) {
-		return { status: 'error', error: 'Invalid login' }
+	if (!email || !password)
+    	return res.status(400).json({ msg: "Not all fields have been entered." });
+
+	const user = await User.findOne({ email: email });
+    if (!user)
+	{
+		return res
+        .status(400)
+        .json({ msg: "No account with this email has been registered." });
 	}
 
-	const isPasswordValid = await bcrypt.compare(
-		req.body.password,
-		user.password
-	)
+	const isPasswordValid = await bcrypt.compare(password, user.password);
 
 	if (isPasswordValid) {
-		const token = jwt.sign(
-			{
-				name: user.name,
-				email: user.email,
-			},
-			process.env.JWT_SECRET
-		)
-
-		return res.json({ status: 'ok', user: token })
+		const token = generateToken(user._id);
+		return res.json({ status: 'ok', user: token });
 	} else {
-		return res.json({ status: 'error', user: false })
+		return res.json({ status: 'error', user: false });
 	}
 })
 
