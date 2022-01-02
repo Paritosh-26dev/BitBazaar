@@ -1,18 +1,20 @@
-const express = require("express");
-const router = express.Router();
-const Item = require("../models/itemModel");
+const express = require("express") ;
+const router = express.Router() ;
+const Item = require("../models/itemModel") ;
 
-router.route("/create").post((req, res) => {
-    const name = req.body.name;
-    const price = req.body.price;
-    const description = req.body.description;
+router.route("/create").post((req,res) => {
+    const name = req.body.name ;
+    const price = req.body.price ;
+    const description = req.body.description ;
+    const category = req.body.category ;
     const newItem = new Item({
         name,
         price,
-        description
+        description,
+        category
     })
 
-    newItem.save();
+    newItem.save() ;
 })
 
-module.exports = router;
+module.exports = router ;

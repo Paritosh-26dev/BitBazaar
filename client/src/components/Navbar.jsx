@@ -6,7 +6,7 @@ import "../../src/style.css";
 function Navbar() {
     return (
 
-        <div className="container-fluid">
+        <div className="nav-container container-fluid">
             {/* <!-- Nav Bar --> */}
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <Link className="navbar-brand" to="/">BitBazaar</Link>
@@ -33,7 +33,7 @@ function Navbar() {
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <Link className="dropdown-item" to="/signup">Sign Up</Link>
                                 <Link className="dropdown-item" to="/">Login</Link>
-                                <Link className="dropdown-item" to="/">Fuck Off</Link>
+                                <Link className="dropdown-item" to="/ProfilePage">My Profile</Link>
                             </div>
                         </div>
                         </li>

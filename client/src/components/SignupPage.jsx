@@ -108,7 +108,7 @@ function SignupPage() {
         </div>
         <div className="col-lg-6 container-fluid bitbazaar-intro">
           <h1>BIT Bazaar</h1>
-          <p>Your All in One Platform to Buy , Sell And Trade At College.</p>
+          <p>Buy, Sell And Trade At College!</p>
 
         </div>
       </div>

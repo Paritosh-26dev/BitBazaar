@@ -9,6 +9,9 @@ import SellPage from "./SellPage";
 import ContactUs from "./ContactUs";
 import ErorPage from "./ErrorPage";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import ProfilePage from "./ProfilePage";
+import Forgot from "./Forgot";
+import Reset from "./Reset";
 
 function App() {
   return (
@@ -20,10 +23,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/Forgot" element={<Forgot />} />
+          <Route path="/auth/reset-password/:token" element={<Reset />} />
           <Route path="/Marketplace" element={<BuyPage />} />
           <Route path="/Wishlist" element={<WishList />} />
           <Route path="/Sell" element={<SellPage />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/ProfilePage" element={<ProfilePage />} />
           <Route path="*" element={<ErorPage />} />
         </Routes>
       </Router>

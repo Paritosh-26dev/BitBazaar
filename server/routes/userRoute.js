@@ -1,25 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userCard");
-const bcrypt = require('bcryptjs');
-const generateToken = require("../utils/generateToken");
+const userController = require("../controllers/userController");
+const auth = require("../middlewares/auth");
 
 //API for registering new user
-router.post('/api/register', async (req, res) => {
-	try {
-		const newPassword = await bcrypt.hash(req.body.password, 10);
-		await User.create({
-			_id: req.body._id,
-			name: req.body.name,
-			email: req.body.email,
-			password: newPassword,
-			isAdmin: false,
-			token: generateToken(req.body._id),
-		}); 
-		res.json({ status: 'ok' })
-	} catch (err) {
-        res.json({ status: 'error', error: 'Duplicate email'})
-	}
-})
+router.post('/api/register', userController.register);
 
-module.exports = router;
+//API for loging in user
+router.post('/api/login', userController.login); 
+
+//API for forget password
+router.post("/api/forgot_pass", userController.forgot);
+
+//API for reset password
+router.post("/api/reset_pass", auth, userController.reset);
+
+// router.patch("/api/user_update", auth, userController.update);
+// router.get("/api/logout", userController.logout);
+// router.post("/api/google_signing", userController.google);
+
+module.exports = router;  

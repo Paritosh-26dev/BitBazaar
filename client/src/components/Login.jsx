@@ -1,12 +1,25 @@
 import React, { useState } from "react";
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Input from "@material-ui/core/Input";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/style.css";
-
-// const baseURL = "http://localhost:5000/findUser";
+import { logInUser } from "../actions/UserActions" ;
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [values, setValues] = useState({ password: "", showPassword: false });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   async function loginUser(event) {
     event.preventDefault();
@@ -20,12 +33,15 @@ function Login() {
         password,
       }),
     })
-
-    const data = await response.json();
  
+    const data = await response.json();
+
     if (data.user) {
       localStorage.setItem('token', data.user);
       alert('Login successful');
+      logInUser(data.userid);
+
+      //sidpatch(loginaction , userid as a parameter)
       window.location.href = '/Marketplace'
     } else {
       alert('Please check your username and password');
@@ -57,14 +73,23 @@ function Login() {
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input
+            <Input
               onChange={(e) => setPassword(e.target.value)}
               id="example2"
               aria-describedby="usernameHelp"
-              type="password"
               name="password"
               className="form-control input_pass"
-              placeholder="password"
+              placeholder="Password"
+              type={values.showPassword ? "text" : "password"}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword} >
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
           </div>
           <div className="d-flex justify-content-center mt-3 login_container">
@@ -78,11 +103,11 @@ function Login() {
           Don't have an account? <a href="http://localhost:3000/signup" className="ml-2">Sign Up</a>
         </div>
         <div className="d-flex justify-content-center links">
-          <a href="/">Forgot your password?</a>
+          <a href="/Forgot">Forgot your password?</a>
         </div>
       </div>
     </div>
 
   );
 }
-export default Login;
+export default Login ;

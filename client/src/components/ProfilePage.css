@@ -1,0 +1,79 @@
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+.pp-bg {
+  background-color: rgb(0, 160, 232);
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 146, 223),
+    rgb(0, 160, 232),
+    rgb(175, 219, 244)
+  );
+}
+
+.container {
+  padding: 3%;
+}
+
+img {
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.pp-btn{
+  margin: 5% 3% 5% 4%;
+}
+/* About Me 
+---------------------*/
+.about-text h3 {
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+@media (max-width: 767px) {
+  .about-text h3 {
+    font-size: 35px;
+  }
+}
+
+.about-text p {
+  font-size: 18px;
+  max-width: 450px;
+}
+.about-text p mark {
+  font-weight: 600;
+  color: #20247b;
+}
+
+.about-list {
+  padding-top: 10px;
+}
+.about-list .media {
+  padding: 5px 0;
+}
+.about-list label {
+  color: #20247b;
+  font-weight: 600;
+  width: 88px;
+  margin: 0;
+  position: relative;
+}
+
+.about-list p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  .about-avatar {
+    margin-top: 30px;
+  }
+}
+
+.dark-color {
+    color: #20247b;
+}

@@ -16,7 +16,6 @@ mongoose.connect(mongodb_uri);
 app.use("/", require("./routes/itemRoute"));
 app.use("/", require("./routes/marketplaceRoute"));
 app.use("/" , require("./routes/userRoute")) ;
-app.use("/" , require("./routes/findUserRoute")) ;
 
 const PORT = process.env.PORT || 5000;
 

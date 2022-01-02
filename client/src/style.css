@@ -3,10 +3,14 @@ body {
 }
 
 .container-fluid {
-  padding: 1% 5% 1%;
+  padding: 3% 4% 8%;
 }
 
 /* navbar */
+
+.nav-container {
+  padding: 1% 5% 1%;
+}
 
 .navbar {
   padding: 0 0 0;
@@ -30,7 +34,7 @@ body {
 
 /* Home */
 .home {
-  background-color: rgb(255, 205, 205);
+  
   background-image: url(https://almashines.s3.dualstack.ap-southeast-1.amazonaws.com/assets/images/gallary_photos/t1569912508_yCgO1tKWab.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -49,18 +53,33 @@ body {
   );
   color: #fff;
 }
+
 .bitbazaar-intro {
+  padding-left: 5%;
+  padding-top: 10%;
+}
+
+.bitbazaar-intro p{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  /* font-style: italic; */
+  text-align: center;
+  /* color: rgb(60, 9, 128); */
+  color: #20247b;
+  font-size: 1.75rem;
+  line-height: 1.5;
+}
+
+.bitbazaar-intro h1{
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   /* font-style: italic; */
   text-align: center;
-  color: rgb(60, 9, 128);
-  font-size: 1.75rem;
+  /* color: rgb(60, 9, 128); */
+  color: #20247b;
+  font-size: 2.75rem;
   line-height: 1.5;
-  padding-left: 5%;
-  padding-top: 7%;
 }
-
 
 .user_card {
   height: 100%;

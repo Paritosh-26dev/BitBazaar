@@ -3,6 +3,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./SellCard.css";
 import axios from "axios";
 
+
 const baseURL = "http://localhost:5000/create";
 
 function SellCard() {
@@ -10,11 +11,11 @@ function SellCard() {
     const [input, setInput] = useState({
         name: "",
         price: "",
-        description: ""
+        description: "",
+        category: ""
     })
 
     function handleChange(event) {
-        // console.log(event.target)
         const { name, value } = event.target;
         setInput(prevInput => {
             return {
@@ -28,7 +29,8 @@ function SellCard() {
         const newItem = {
             name: input.name,
             price: input.price,
-            description: input.description
+            description: input.description,
+            category: input.category
         }
 
         axios.post(baseURL, newItem);
@@ -57,8 +59,8 @@ function SellCard() {
                     <label htmlFor="inputState" className="mb-2 fw-bold">
                         Category :
                     </label>
-                    <select id="inputState" className="form-control">
-                        <option selected>Choose...</option>
+                    <select id="inputState" name="category" onChange={handleChange} value={input.category} className="form-control">
+                        <option>Choose...</option>
                         <option>Stationary</option>
                         <option>Electronics</option>
                         <option>Others</option>
