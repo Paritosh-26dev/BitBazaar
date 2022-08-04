@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../src/style.css";
+import "../../../src/style.css";
 
 // const baseURL = "http://localhost:5000/createNewUser";
 

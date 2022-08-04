@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../src/style.css";
+import "../../../src/style.css";
 
 function Forgot() {
     const [email, setEmail] = useState('');

@@ -5,8 +5,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Input from "@material-ui/core/Input";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../src/style.css";
-import { logInUser } from "../actions/UserActions" ;
+import "../../../src/style.css";
+import { logInUser } from "../../actions/UserActions" ;
 
 function Login() {
   const [email, setEmail] = useState('');

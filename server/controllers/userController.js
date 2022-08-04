@@ -80,7 +80,7 @@ const userController = {
   },
   forgot: async (req, res) => {
     try {
-      // get email
+      // get email 
       const { email } = req.body;
 
       // check email

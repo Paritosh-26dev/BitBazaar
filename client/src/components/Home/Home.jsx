@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "./Login";
-import "../../src/style.css";
+import Login from "../Login/Login";
+import "../../../src/style.css";
 
 function Home() {
   return (

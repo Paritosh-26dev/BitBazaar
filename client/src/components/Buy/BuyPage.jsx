@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BuyCard from "./BuyCard";
 import "./BuyCard.css";
-import axios from "axios";
 
-const baseURL = "http://localhost:5000/sell";
+//const baseURL = "http://localhost:5000/sell";
 
 var selectedCategory = "";
 var selectedPrice = "" ;
